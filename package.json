@@ -1,0 +1,15 @@
+{
+  "name": "react-native-navigation-register-screens",
+  "version": "1.0.0",
+  "description": "This is a utility function to register array of screens instead of calling Navigation.registerComponent multiple times",
+  "main": "index.js",
+  "scripts": {
+    "test": "yarn jest"
+  },
+  "keywords": [
+    "react-native",
+    "react-native-navigation"
+  ],
+  "author": "Karl Marx Lopez",
+  "license": "MIT"
+}
