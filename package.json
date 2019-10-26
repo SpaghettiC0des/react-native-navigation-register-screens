@@ -13,6 +13,7 @@
   "author": "Karl Marx Lopez",
   "license": "MIT",
   "peerDependencies": {
+    "react-native": "^0.61.2",
     "react-native-navigation": "^2.27.9"
   }
 }
