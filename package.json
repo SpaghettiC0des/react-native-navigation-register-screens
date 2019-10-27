@@ -12,7 +12,8 @@
     "build": "yarn tsc",
     "dev": "yarn tsc --watch",
     "prepack": "yarn build",
-    "prepublishOnly" : "yarn test"
+    "prepublishOnly" : "yarn test",
+    "version" : "git add -A src"
   },
   "keywords": [
     "react-native",
