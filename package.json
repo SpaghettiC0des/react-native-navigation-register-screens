@@ -12,6 +12,9 @@
     "react-native-navigation"
   ],
   "author": "Karl Marx Lopez",
+  "repository": {
+    "url": "https://github.com/karlmarxlopez/react-native-navigation-register-screens"
+  },
   "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.61.2",
