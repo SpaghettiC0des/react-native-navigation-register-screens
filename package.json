@@ -4,7 +4,9 @@
   "description": "This is a utility function to register array of screens instead of calling Navigation.registerComponent multiple times",
   "main": "index.js",
   "types": "index.d.ts",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "test": "yarn jest --config ./jestconfig.json",
     "build": "yarn tsc",
@@ -20,15 +22,22 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "react-native": "^0.61.2",
+    "react": "^15.0.0",
+    "react-native": "^0.56",
     "react-native-navigation": "^2.27.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/runtime": "^7.6.3",
     "@types/jest": "^24.0.20",
     "@types/react": "^16.9.11",
     "@types/react-native": "^0.60.21",
     "@types/react-native-navigation": "^2.0.0",
+    "babel-jest": "^24.9.0",
     "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.56.3",
+    "react": "^16.11.0",
+    "react-native": "^0.61.2",
     "ts-jest": "^24.1.0",
     "typescript": "^3.6.4"
   }
