@@ -24,6 +24,7 @@
     "@types/react": "^16.9.11",
     "@types/react-native": "^0.60.21",
     "@types/react-native-navigation": "^2.0.0",
+    "jest": "^24.9.0",
     "typescript": "^3.6.4"
   }
 }
