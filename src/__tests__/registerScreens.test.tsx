@@ -21,16 +21,20 @@ const Baz: ScreenFunctionComponent = function Baz() {
 
 Baz.screenName = 'screens.Messaging.Baz';
 
+function mockRegisterComponent() {
+  return jest.fn(
+    (
+      screenName: string,
+      componentProvider: () => ScreenFunctionComponent,
+    ): (() => ScreenFunctionComponent) => {
+      return () => componentProvider();
+    },
+  );
+}
+
 describe('registerScreens', () => {
   it('should register array of components as navigation component', () => {
-    const mockedRegisterComponent = jest.fn(
-      (
-        screenName: string,
-        componentProvider: () => ScreenFunctionComponent,
-      ): (() => ScreenFunctionComponent) => {
-        return () => componentProvider();
-      },
-    );
+    const mockedRegisterComponent = mockRegisterComponent()
     Navigation.registerComponent = mockedRegisterComponent;
     const screens: any[] = registerScreens([Foo, Bar, Baz]);
 
@@ -39,5 +43,17 @@ describe('registerScreens', () => {
     expect(screens[0]().screenName).toBe(Foo.screenName);
     expect(screens[1]().screenName).toBe(Bar.screenName);
     expect(screens[2]().screenName).toBe(Baz.screenName);
+  });
+
+  it('should have an optional prefix', () => {
+    const mockedRegisterComponent = mockRegisterComponent()
+    Navigation.registerComponent = mockedRegisterComponent;
+
+    const screens: any[] = registerScreens([Foo], 'ACME');
+    
+    expect(mockedRegisterComponent).toHaveBeenCalledTimes(1);
+    expect(screens).toHaveLength(1);
+    expect(screens[0]().screenName).toBe('ACME.screens.Foo');
+   
   });
 });
