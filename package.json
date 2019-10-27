@@ -8,10 +8,11 @@
     "dist/**/*"
   ],
   "scripts": {
-    "test": "yarn jest --config ./jestconfig.json",
+    "test": "yarn jest",
     "build": "yarn tsc",
     "dev": "yarn tsc --watch",
-    "prepack": "yarn build"
+    "prepack": "yarn build",
+    "prepublishOnly" : "yarn test"
   },
   "keywords": [
     "react-native",
