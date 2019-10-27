@@ -15,7 +15,7 @@ function registerScreens(
 ): ComponentProvider[] {
   return screens.map(screen => {
     const s = screen as IScreenName;
-    const screenName = (s.screenName = `${prefix ? `${prefix}.` : prefix}${
+    const screenName = (s.screenName = `${prefix ? `${prefix}.` : ''}${
       s.screenName
     }`);
     return Navigation.registerComponent(
