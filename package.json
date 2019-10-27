@@ -5,7 +5,9 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "test": "yarn jest"
+    "test": "yarn jest",
+    "build": "yarn tsc",
+    "dev": "yarn tsc --watch"
   },
   "keywords": [
     "react-native",
