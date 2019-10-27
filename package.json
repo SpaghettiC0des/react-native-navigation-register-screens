@@ -10,7 +10,8 @@
   "scripts": {
     "test": "yarn jest --config ./jestconfig.json",
     "build": "yarn tsc",
-    "dev": "yarn tsc --watch"
+    "dev": "yarn tsc --watch",
+    "prepack": "yarn build"
   },
   "keywords": [
     "react-native",
