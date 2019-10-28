@@ -1,6 +1,6 @@
 {
   "name": "react-native-navigation-register-screens",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "This is a utility function to register array of screens instead of calling Navigation.registerComponent multiple times",
   "main": "index.js",
   "types": "index.d.ts",
@@ -12,8 +12,7 @@
     "test": "yarn jest",
     "build": "yarn tsc",
     "dev": "yarn tsc --watch",
-    "prepack": "yarn build",
-    "prepublishOnly" : "yarn test",
+    "prepublishOnly" : "yarn test ./src",
     "version" : "git add -A src",
     "postversion" : "git push && git push --tags"
   },
