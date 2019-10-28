@@ -1,3 +1,1 @@
-const registerScreens = require('./dist/registerScreens');
-
-exports.default = registerScreens;
+module.exports = require('./dist/')
