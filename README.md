@@ -39,11 +39,11 @@ MyFunctionComponent.options = props => {
 
 ### Class Components
 ```ts
-type MyPureComponentProps = {
+type MyComponentProps = {
     message: string;
 }
 
-class MyClassComponent extends ScreenComponent<MyPureComponentProps> {
+class MyClassComponent extends ScreenComponent<MyComponentProps> {
     static screenName = 'MyApp.Screens.MyClassComponent';
 
     render() {
@@ -91,21 +91,36 @@ You can provide a prefix as the second parameter, this will be added to the `scr
 
 ```ts
 
-registerScreens([MyFunctionComponent, MyClassComponent, MyPureComponent], 'ACME');
+registerScreens(
+    [
+        MyFunctionComponent, 
+        MyClassComponent, 
+        MyPureComponent
+    ], 
+    'ACME'
+);
 
 ```
 
 # With providers
 If your using `react-redux`'s `Provider` or other similar libraries, you can provide a third parameter as the callback function.
-```ts
+```tsx
 import { Provider } from 'react-redux';
 import store from '../store';
 
-registerScreens([MyFunctionComponent, MyClassComponent, MyPureComponent], 'ACME', Component => props => (
-    <Provider store={store}>
-        <Component {...props} />
-    </Provider>
-));
+registerScreens(
+    [
+        MyFunctionComponent, 
+        MyClassComponent, 
+        MyPureComponent
+    ], 
+    'ACME', 
+    Component => props => (
+        <Provider store={store}>
+            <Component {...props} />
+        </Provider>
+    )
+);
 
 ```
 
