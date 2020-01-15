@@ -1,26 +1,35 @@
 import {
-  FunctionComponent,
   Component,
+  ComponentType,
+  FC,
   PureComponent,
-  ComponentType
+  FunctionComponent
 } from "react";
-import { Options } from "react-native-navigation";
 import { ComponentProvider } from "react-native";
+import { Options } from "react-native-navigation";
 
 /**
  * Passed by react-native-navigation
  */
 declare type WithComponentId = { componentId: string };
 
-declare interface ScreenFunctionComponent<P = {}>
-  extends FunctionComponent<P & WithComponentId> {
-  screenName: string;
-  options?: ((props: P) => Options) | Options;
-}
+declare type ScreenOptions<P> = ((props: P) => Options) | Options;
 
-interface IScreenName {
-  screenName: string;
-}
+declare type ScreenComponentStaticMembers<P> = {
+  screenName?: string;
+  options?: ScreenOptions<P>;
+};
+
+declare type ScreenFunctionComponent<P = {}> = FunctionComponent<
+  P & WithComponentId
+> &
+  ScreenComponentStaticMembers<P & WithComponentId>;
+
+declare type ScreenFC<P = {}> = FC<P & WithComponentId> &
+  ScreenComponentStaticMembers<P & WithComponentId>;
+
+declare type ScreenSFC<P = {}> = FC<P & WithComponentId> &
+  ScreenComponentStaticMembers<P & WithComponentId>;
 
 declare class ScreenComponent<P = {}, S = {}, SS = any> extends Component<
   P & WithComponentId,
@@ -48,6 +57,7 @@ declare class ScreenPureComponent<
 
 declare type Screen =
   | ScreenFunctionComponent
+  | ScreenFC
   | ScreenComponent
   | ScreenPureComponent;
 
