@@ -16,7 +16,7 @@ declare type WithComponentId = { componentId: string };
 declare type ScreenOptions<P> = ((props: P) => Options) | Options;
 
 declare type ScreenComponentStaticMembers<P> = {
-  screenName?: string;
+  screenName: string;
   options?: ScreenOptions<P>;
 };
 
@@ -62,10 +62,10 @@ declare type Screen =
   | ScreenPureComponent;
 
 declare module "react-native-navigation-register-screens" {
-  export function registerScreens(
+  export default function registerScreens(
     screens: Screen[],
-    prefix: string,
-    customComponentProvider: (
+    prefix?: string,
+    customComponentProvider?: (
       component: ComponentType<any>
     ) => ComponentType<any>
   ): ComponentProvider[];
