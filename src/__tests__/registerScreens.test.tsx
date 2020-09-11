@@ -1,27 +1,27 @@
-import React from "react";
-import { Text } from "react-native";
-import { Navigation } from "react-native-navigation";
-import registerScreens from "../registerScreens";
-import { ScreenFunctionComponent } from "../..";
+import React from 'react';
+import {Text} from 'react-native';
+import {Navigation} from 'react-native-navigation';
+import registerScreens from '../registerScreens';
+import {ScreenFC} from '../types';
 
-const Foo: ScreenFunctionComponent = function Foo() {
+const Foo: ScreenFC = function Foo() {
   return <Text>Foo</Text>;
 };
-Foo.screenName = "screens.Foo";
+Foo.screenName = 'screens.Foo';
 
-const Bar: ScreenFunctionComponent = function Bar() {
+const Bar: ScreenFC = function Bar() {
   return <Text>Bar</Text>;
 };
 
-Bar.screenName = "SideMenu.Bar";
+Bar.screenName = 'SideMenu.Bar';
 
-const Baz: ScreenFunctionComponent = function Baz() {
+const Baz: ScreenFC = function Baz() {
   return <Text>Baz</Text>;
 };
 
-Baz.screenName = "screens.Messaging.Baz";
+Baz.screenName = 'screens.Messaging.Baz';
 
-function MyProvider({ children }: { children: any }) {
+function MyProvider({children}: {children: any}) {
   return children;
 }
 
@@ -29,15 +29,15 @@ function mockRegisterComponent() {
   return jest.fn(
     (
       screenName: string,
-      componentProvider: () => ScreenFunctionComponent
-    ): (() => ScreenFunctionComponent) => {
+      componentProvider: () => ScreenFC,
+    ): (() => ScreenFC) => {
       return () => componentProvider();
-    }
+    },
   );
 }
 
-describe("registerScreens", () => {
-  it("should register array of components as navigation component", () => {
+describe('registerScreens', () => {
+  it('should register array of components as navigation component', () => {
     const mockedRegisterComponent = mockRegisterComponent();
     Navigation.registerComponent = mockedRegisterComponent;
     const screens: any[] = registerScreens([Foo, Bar, Baz]);
@@ -49,30 +49,15 @@ describe("registerScreens", () => {
     expect(screens[2]().screenName).toBe(Baz.screenName);
   });
 
-  it("should have an optional prefix", () => {
+  it('should allow optional callback when wrapping screens with providers (e.g Redux Provider)', () => {
     const mockedRegisterComponent = mockRegisterComponent();
     Navigation.registerComponent = mockedRegisterComponent;
 
-    const screens: any[] = registerScreens([Foo], "ACME");
-
-    expect(mockedRegisterComponent).toHaveBeenCalledTimes(1);
-    expect(screens).toHaveLength(1);
-    expect(screens[0]().screenName).toBe("ACME.screens.Foo");
-  });
-
-  it("should allow optional callback when wrapping screens with providers (e.g Redux Provider)", () => {
-    const mockedRegisterComponent = mockRegisterComponent();
-    Navigation.registerComponent = mockedRegisterComponent;
-
-    const screens: any[] = registerScreens(
-      [Foo],
-      "ACME",
-      Component => props => (
-        <MyProvider>
-          <Component {...props} />
-        </MyProvider>
-      )
-    );
+    const screens: any[] = registerScreens([Foo], (Component) => (props) => (
+      <MyProvider>
+        <Component {...props} />
+      </MyProvider>
+    ));
 
     expect(mockedRegisterComponent).toHaveBeenCalledTimes(1);
     expect(screens).toHaveLength(1);
