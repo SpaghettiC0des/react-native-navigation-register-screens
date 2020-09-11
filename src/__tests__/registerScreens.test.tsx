@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text} from 'react-native';
 import {Navigation} from 'react-native-navigation';
-import registerScreens from '../registerScreens';
+import {registerScreens} from '../registerScreens';
 import {ScreenFC} from '../types';
 
 const Foo: ScreenFC = function Foo() {

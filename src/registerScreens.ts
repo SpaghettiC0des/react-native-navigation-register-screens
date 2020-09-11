@@ -1,14 +1,13 @@
 import {Navigation} from 'react-native-navigation';
 import {ComponentProvider} from 'react-native';
 import {ComponentType} from 'react';
-import {ScreenFC} from './types';
 
 /**
  * Util function that wraps Navigation.registerComponent
  * @param screens Array of screen component
  */
 export function registerScreens(
-  screens: ScreenFC[],
+  screens: any[],
   componentProvider?: (component: ComponentType<any>) => ComponentType<any>,
 ): ComponentProvider[] {
   return screens.map((screen) => {
