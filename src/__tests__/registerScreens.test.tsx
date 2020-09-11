@@ -28,7 +28,7 @@ function MyProvider({children}: {children: any}) {
 function mockRegisterComponent() {
   return jest.fn(
     (
-      screenName: string,
+      _screenName: string,
       componentProvider: () => ScreenFC,
     ): (() => ScreenFC) => {
       return () => componentProvider();
