@@ -1,48 +1,82 @@
 {
   "name": "react-native-navigation-register-screens",
   "version": "1.0.7",
-  "description": "This is a utility function to register array of screens instead of calling Navigation.registerComponent multiple times",
-  "main": "index.js",
-  "types": "index.d.ts",
-  "files": [
-    "dist/**/*",
-    "index.d.ts"
-  ],
-  "scripts": {
-    "test": "yarn jest",
-    "build": "yarn tsc",
-    "dev": "yarn tsc --watch",
-    "prepublishOnly": "yarn test ./src",
-    "version": "git add -A src",
-    "postversion": "git push && git push --tags"
+  "private": false,
+  "license": "MIT",
+  "author": {
+    "name": "Karl Marx Lopez",
+    "email": "karlmarx.webdev@gmail.com"
+  },
+  "repository": {
+    "url": "https://github.com/react-native-navigation-register-screens.git"
   },
   "keywords": [
     "react-native",
-    "react-native-navigation"
+    "react-native-navigation",
+    "navigation",
+    "utility"
   ],
-  "author": "Karl Marx Lopez",
-  "repository": {
-    "url": "https://github.com/karlmarxlopez/react-native-navigation-register-screens"
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "type": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
-  "license": "MIT",
   "peerDependencies": {
-    "react": "^15.0.0",
-    "react-native": "^0.56",
-    "react-native-navigation": "^2.27.9"
+    "react": "16.13.1",
+    "react-native": "0.63.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/runtime": "^7.6.3",
-    "@types/jest": "^24.0.20",
-    "@types/react": "^16.9.11",
-    "@types/react-native": "^0.60.21",
-    "@types/react-native-navigation": "^2.0.0",
-    "babel-jest": "^24.9.0",
-    "jest": "^24.9.0",
-    "metro-react-native-babel-preset": "^0.56.3",
-    "react": "^16.11.0",
-    "react-native": "^0.61.2",
-    "ts-jest": "^24.1.0",
-    "typescript": "^3.6.4"
+    "@babel/core": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "@react-native-community/eslint-config": "^1.1.0",
+    "@testing-library/react-native": "^7.0.2",
+    "@types/jest": "^25.2.3",
+    "@types/react-native": "^0.63.2",
+    "@types/react-test-renderer": "^16.9.2",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "babel-jest": "^25.1.0",
+    "eslint": "^6.5.1",
+    "husky": ">=4",
+    "jest": "^25.1.0",
+    "lint-staged": ">=10",
+    "metro-react-native-babel-preset": "^0.59.0",
+    "prettier": "^2.0.4",
+    "react": "16.13.1",
+    "react-native": "0.63.2",
+    "react-test-renderer": "16.13.1",
+    "typescript": "^3.8.3"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
+  },
+  "dependencies": {
+    "react-native-navigation": "^7.0.0"
   }
 }
