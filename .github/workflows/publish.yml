@@ -1,19 +1,17 @@
-name: Publish NPM package
-on:
-  release:
-    types: [created]
+on: push
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm cit
+      - run: yarn
+      - run: yarn test
   publish:
     runs-on: ubuntu-latest
     needs: test
     steps:
       - uses: actions/checkout@v2
-      - run: npm i
-      - run: npm publish
+      - run: yarn
+      - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
